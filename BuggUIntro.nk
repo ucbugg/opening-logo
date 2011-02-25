@@ -1,0 +1,114 @@
+#! /Applications/Nuke6.2v1/Nuke6.2v1.app/Contents/MacOS/Nuke6.2v1 -nx
+version 6.2 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="22" w="1440" h="826" screen="0">
+        <splitter orientation="1">
+            <split size="910"/>
+            <splitter orientation="1">
+                <split size="40"/>
+                <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                    <page id="Toolbar.1"/>
+                </dock>
+                <split size="866"/>
+                <splitter orientation="2">
+                    <split size="400"/>
+                    <dock id="" activePageId="Viewer.1">
+                        <page id="Viewer.1"/>
+                    </dock>
+                    <split size="400"/>
+                    <dock id="" activePageId="DAG.1">
+                        <page id="DAG.1"/>
+                        <page id="Curve Editor.1"/>
+                        <page id="DopeSheet.1"/>
+                    </dock>
+                </splitter>
+            </splitter>
+            <split size="526"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /Users/petertsoi/BuggUIntro.nk
+ last_frame 25
+ lock_range true
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Text {
+ inputs 0
+ message "Modeling Tips and Tricks"
+ Font 0
+ font "/Users/petertsoi/Downloads/Helvetica Neue/HelveticaNeueBold.ttf"
+ size 64
+ xjustify center
+ yjustify center
+ box {512 389 2432 1469}
+ translate {-512 -650}
+ center {1024 778}
+ color {0 0 0 {curve x15 0 x36 1}}
+ name Text2
+ xpos 300
+ ypos -137
+}
+Text {
+ message "BUGG-U Tutorials"
+ font "/Users/petertsoi/Downloads/Helvetica Neue/HelveticaNeueBold.ttf"
+ size 128
+ xjustify center
+ yjustify center
+ Transform 1
+ box {512 389 2432 1469}
+ translate {-512 -545}
+ center {1024 778}
+ color {0 0 0 {curve x15 0 x36 1}}
+ name Text1
+ xpos 157
+ ypos -137
+}
+Read {
+ inputs 0
+ file /Users/petertsoi/Desktop/BUGG/animintro.###.iff
+ format "1920 1080 0 0 1920 1080 1 HD"
+ last 96
+ origlast 96
+ origset true
+ on_error "nearest frame"
+ name Read1
+ xpos -92
+ ypos -160
+}
+Merge2 {
+ inputs 2
+ name Merge1
+ xpos 67
+ ypos -45
+}
+set N2597ca90 [stack 0]
+Viewer {
+ frame 1
+ frame_range 1-48
+ input_process false
+ name Viewer1
+ xpos 42
+ ypos 86
+}
+push $N2597ca90
+Write {
+ file /Users/petertsoi/Desktop/UCBUGGIntro.mov
+ file_type mov
+ keyframerate 0
+ settings 0000000000000000000000000000020d7365616e000000010000000100000000000001f976696465000000010000000f00000000000000227370746c0000000100000000000000006d6a7061000000000018000003ff000000207470726c000000010000000000000000000000000018000000000000000000246472617400000001000000000000000000000000000000530000010000000100000000156d70736f00000001000000000000000000000000186d66726100000001000000000000000000000000000000187073667200000001000000000000000000000000000000156266726100000001000000000000000000000000166d70657300000001000000000000000000000000002868617264000000010000000000000000000000000000000000000000000000000000000000000016656e647300000001000000000000000000000000001663666c67000000010000000000000000004400000018636d66720000000100000000000000006170706c00000014636c75740000000100000000000000000000007363646563000000010000000000000000000000000000000000000000000000537365616e000000010000000300000000000000156669656c000000010000000000000000020000001566646f6d00000001000000000000000001000000157274706a000000010000000000000000000000001c766572730000000100000000000000000003001c00010000
+ checkHashOnRead false
+ version 2
+ name Write1
+ selected true
+ xpos 160
+ ypos 68
+}
